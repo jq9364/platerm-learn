@@ -10,17 +10,21 @@ import 'babel-polyfill';
 // 引入 自己写的组件
 import './components/componentRegister.js';
 
+// -----------------ElementUI-------------------
 // 完整引入
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 // 局部引入 首先 安装一个 插件
-// import {Menu, Submenu, MenuItem} from 'element-ui';
-// Vue.use(Menu);
-// Vue.use(Submenu);
-// Vue.use(MenuItem);
+// import {Menu, Submenu, MenuItem, Tabs, TabPane} from 'element-ui';
 
-// 国际化
+// 单独引入
+// import DatePicker from '../node_modules/element-ui/packages/date-picker/index';
+// import TimePicker from '../node_modules/element-ui/packages/time-picker/index';
+// import TimeSelect from '../node_modules/element-ui/packages/time-select/index';
+
+
+// ------------- 国际化---------------
 // import locale from 'element-ui/lib/locale/lang/en';
 // Vue.use(ElementUI, {locale});
 
@@ -30,7 +34,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 // // 设置语言
 // locale.use(lang)
 
-// ** Echarts  引入
+// -----------------ElementUI-------------------
+
+
+
+
+// -------------** Echarts  引入--------------
 // 全部引入
 // const echarts = require('echarts');
 
@@ -52,12 +61,23 @@ require('echarts/lib/component/grid');
 require('echarts/lib/component/legend');
 require('echarts/lib/component/graphic');
 
+// -------------** Echarts  引入--------------
+
+
 Vue.use(ElementUI);
+// Vue.use(Menu);
+// Vue.use(Submenu);
+// Vue.use(MenuItem);
+// Vue.use(Tabs);
+// Vue.use(TabPane);
+// Vue.use(DatePicker);
+// Vue.use(TimePicker);
+// Vue.use(TimeSelect);
+
+
 Vue.prototype.$echarts = echarts;
+
 Vue.config.productionTip = false;
-
-// 组件化
-
 
 /* eslint-disable no-new */
 new Vue({

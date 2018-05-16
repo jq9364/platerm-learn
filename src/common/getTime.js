@@ -42,7 +42,7 @@ export const tsmt = () => {
         getDayTime(mountFirstDay) + ' 00:00:00',
         getDayTime(mountLastDay) + ' 23:59:59'];
 };
-
+// 三个选项 选择
 export const getTime = index => {
     switch (index) {
         case 0:
@@ -57,5 +57,11 @@ export const getTime = index => {
         default:
             return index;
     }
+};
+
+//  获取时间段  节点
+export const gethalfTime = index => {
+    console.log(index);
+    return 111;
 };
 

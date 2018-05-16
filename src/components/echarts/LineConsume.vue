@@ -12,10 +12,11 @@
                 range-separator="至"
                 start-placeholder="开始日期"
                 end-placeholder="结束日期"
-                @change="changTime"
-                value-format="yyyy-MM-dd HH:mm:ss"
-                :default-time="['00:00:00', '23:59:59']">
+                @change="changTimeRange"
+                >
             </el-date-picker>
+            <!-- value-format="yyyy-MM-dd HH:mm:ss" -->
+                <!-- :default-time="['00:00:00', '23:59:59']" -->
                 <!-- value-format="timestamp"
                 value-format="yyyy-mm-dd hh:mm:ss" -->
         </div>
@@ -32,7 +33,7 @@
  * @date   : 2018-5-3 10:16:45
  */
 
-import {getTime} from '../common/getTime';
+import {getTime, gethalfTime} from '@/common/getTime';
 export default {
     name: 'LineConsume',
     data() {
@@ -47,7 +48,13 @@ export default {
     methods: {
         changTime(num) {
             this.timeRange = getTime(num);
-            console.log(this.timeRange);
+        },
+        changTimeRange(num) {
+            console.log(333, this.timeRange[0].getTime);
+            console.log(new Date(this.timeRange[0]));
+            // this.timeRange = getTime(num);
+            let half = gethalfTime(num);
+            // console.log(half, num);
         },
         echartShow() {
             let colorArr = [new this.$echarts.graphic.LinearGradient(1, 0, 0, 0, [{
