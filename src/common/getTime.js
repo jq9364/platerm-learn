@@ -65,3 +65,4 @@ export const gethalfTime = index => {
     return 111;
 };
 
+// 时间端

@@ -12,6 +12,7 @@
                 range-separator="至"
                 start-placeholder="开始日期"
                 end-placeholder="结束日期"
+                :picker-options="pickerOptions"
                 @change="changTimeRange"
                 >
             </el-date-picker>
@@ -38,12 +39,19 @@ export default {
     name: 'LineConsume',
     data() {
         return {
-            timeRange: ''
+            timeRange: '',
+            num: 0,
+            pickerOptions: {
+                disabledDate(time) {
+                    // - 8.64e7 一天时间
+                    return time.getTime() > Date.now();
+                }
+            }
         };
     },
     mounted() {
         this.changTime(0);
-        this.echartShow();
+        // this.echartShow();
     },
     methods: {
         changTime(num) {

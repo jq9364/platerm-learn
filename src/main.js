@@ -8,12 +8,14 @@ import router from './router';
 import 'babel-polyfill';
 
 // 引入 自己写的组件
-import './components/componentRegister.js';
+// import './components/componentRegister.js';
 
 // -----------------ElementUI-------------------
 // 完整引入
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+import './sass/element-variables.sass';
 
 // 局部引入 首先 安装一个 插件
 // import {Menu, Submenu, MenuItem, Tabs, TabPane} from 'element-ui';
