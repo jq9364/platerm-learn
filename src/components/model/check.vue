@@ -1,88 +1,134 @@
 <template>
-    <el-form :html="enterprise" ref="enterprise" label-width="112px">
-        <!-- <el-form-item label="企业id" prop="id">
-            <div v-html="enterprise.id"></div>
-        </el-form-item> -->
-        <el-form-item label="企业名称" prop="name"  required >
-            <div v-html="enterprise.name"></div>
-        </el-form-item>
-        <el-form-item label="所属行业" prop="businessText" required>
-            <div v-html="enterprise.businessText"></div>
-        </el-form-item>
-        <el-form-item label="企业人数" prop="employeesRangeText" required>
-            <div v-html="enterprise.employeesRangeText" ></div>
-        </el-form-item>
-        <el-form-item label="企业地址" prop="addressText" >
-            <div v-html="enterprise.addressText" ></div>
-        </el-form-item>
-        <el-form-item label="营业执照" prop="chapter" required>
-            <div class="chapterBox chapterPhoto" @click="showBigImage(enterprise.businessLicenseImage)"
-                v-if="enterprise.businessLicenseImage">
-                <img :src="enterprise.businessLicenseImage" alt="">
+    <el-form :html="developer" label-width="108px">
+        <div class="region-box">
+            <div class="title">开发者信息</div>
+            <el-form-item label="开发者姓名" required>
+                <div v-html="developer.name"></div>
+            </el-form-item>
+            <el-form-item label="开发者身份" required>
+                <div v-html="developer.typeText"></div>
+            </el-form-item>
+            <el-form-item label="企业名称" required>
+                <div v-html="developer.companyName"></div>
+            </el-form-item>
+            <el-form-item label="所属行业" required>
+                <div v-html="developer.business.name"></div>
+            </el-form-item>
+            <template v-if = showPersonal>
+                <el-form-item label="身份证照片" prop="idCardUrl" required class="id-imgbox">
+                    <div class="imgbox clear">
+                        <div class="chapterBox chapterPhoto"
+                            @click="showBigImage(developer.idCardFrontUrl)">
+                            <img :src="developer.idCardFrontUrlShow" alt="">
+                        </div>
+                        <div class="chapterBox chapterPhoto"
+                            @click="showBigImage(developer.idCardBackUrl)">
+                            <img :src="developer.idCardBackUrlShow" alt="">
+                        </div>
+                    </div>
+                </el-form-item>
+                <el-form-item label="身份证编号" required>
+                    <div v-html="developer.idCardNumber"></div>
+                </el-form-item>
+            </template>
+            <template v-else>
+                <el-form-item label="企业人数" required>
+                    <div v-html="developer.employeesRange.name"></div>
+                </el-form-item>
+                <el-form-item label="企业地址" required>
+                    <div v-html="developer.addressText"></div>
+                </el-form-item>
+                <el-form-item label="营业执照" required class="chapter">
+                     <div class="chapterBox chapterPhoto"
+                        @click="showBigImage(developer.businessLicenseImage)">
+                        <img :src="developer.businessLicenseImageShow">
+                    </div>
+                </el-form-item>
+                <el-form-item label="营业执照编号" required>
+                    <div v-html="developer.businessCode"></div>
+                </el-form-item>
+            </template>
+        </div>
+        <div class="region-box">
+            <div class="title">联系方式</div>
+            <el-form-item label="联系人电话" required>
+                <div v-html="developer.mobile"></div>
+            </el-form-item>
+            <el-form-item label="联系邮箱" required>
+                <div v-html="developer.email"></div>
+            </el-form-item>
+        </div>
+        <div v-for="(item, key) in developer.sceneCategoryList"
+            :key = key>
+            <div class="region-box-title">
+                <div class="title">开发内容</div>
             </div>
-        </el-form-item>
-        <el-form-item label="营业执照编号" prop="businessCode" required>
-            <div v-html="enterprise.businessCode"></div>
-        </el-form-item>
-        <el-form-item label="联系人姓名" prop="contact" required>
-            <div v-html="enterprise.contact"></div>
-        </el-form-item>
-        <el-form-item label="联系电话" prop="mobile" required>
-            <div v-html="enterprise.mobile"></div>
-        </el-form-item>
-        <el-form-item label="联系邮箱" prop="email" required>
-            <div v-html="enterprise.email" ></div>
-        </el-form-item>
-        <el-form-item label="用户属性" prop="applyScopeText" required>
-            <div v-html="enterprise.applyScopeText" ></div>
-        </el-form-item>
-        <!-- <el-form-item label="使用场景" prop="sceneTypeId" class="companyScene" required>
-            <el-checkbox-group v-model="enterprise.scenesText">
-                    <el-checkbox
-                        v-for="item in sceneTypes"
-                        :key="item.id"
-                        :label="item.name"
-                        :value="item.id"
-                        disabled
-                        >
-                    </el-checkbox>
+            <el-form-item label="" required>
+                <div>集成新场景</div>
+            </el-form-item>
+            <el-form-item label="意向使用技术" required>
+                <div v-html="item.baseSdkVO ? item.baseSdkVO.name: ''"></div>
+            </el-form-item>
+            <el-form-item label="系统环境" required>
+                <el-checkbox-group v-model="item.systemEnvironmentList">
+                    <el-checkbox label="安卓" disabled></el-checkbox>
+                    <el-checkbox label="IOS" disabled></el-checkbox>
                 </el-checkbox-group>
-        </el-form-item> -->
-        <!-- <div v-if="enterprise.isPayment && enterprise.isPayChannel">
-            <el-form-item label="收款商户主体" prop="merchantName"  required>
-                <div v-html="enterprise.merchant.name" ></div>
             </el-form-item>
-            <el-form-item label="百度钱包商户号" prop="baiduPayNo">
-                <div v-html="enterprise.merchant.baiduPayNo" ></div>
+            <el-form-item label="开发场景名称" required>
+                <div v-html="item.name"></div>
             </el-form-item>
-            <el-form-item label="支付宝商户号" prop="zfbPayNo" >
-                <div v-html="enterprise.merchant.zfbPayNo" ></div>
+            <el-form-item label="开发场景概述" required>
+                <div v-html="item.description"></div>
             </el-form-item>
-            <el-form-item label="微信商户号" prop="wxPayNo" >
-                <div v-html="enterprise.merchant.wxPayNo" ></div>
+        </div>
+
+        <div v-for="(item, key) in developer.commonSceneList"
+            :key = key>
+            <div class="region-box-title">
+                <div class="title">开发内容</div>
+            </div>
+            <el-form-item label="" required>
+                <div>集成新设备</div>
             </el-form-item>
-        </div> -->
+            <el-form-item label="开发场景" required>
+                <div v-html="item.sceneCategoryName"></div>
+            </el-form-item>
+            <el-form-item label="选择使用SDK" required>
+                <div v-html="item.sceneCategorySdkName"></div>
+            </el-form-item>
+            <el-form-item label="设备分类" required>
+                <div v-html="item.deviceCategorySdkName"></div>
+            </el-form-item>
+            <el-form-item label="开发设备名称" required>
+                <div v-html="item.name"></div>
+            </el-form-item>
+            <el-form-item label="设备分类" required>
+                <div v-html="item.description"></div>
+            </el-form-item>
+        </div>
+        <el-form-item label="开发者状态" prop="status" >
+            <span v-html="developer.statusText"></span>
+            <span v-show="developer.reason"
+                class="p-l-10">驳回原因: {{developer.reason}}</span>
+        </el-form-item>
         <el-form-item label="创建时间" prop="createTime" >
-            <div v-html="enterprise.createTime" ></div>
+            <div v-html="developer.createTime" ></div>
         </el-form-item>
         <el-form-item label="最后修改时间" prop="updateTime" >
-            <div v-html="enterprise.updateTime" ></div>
+            <div v-html="developer.updateTime" ></div>
         </el-form-item>
         <el-form-item label="最后操作人" prop="updateUser" >
-            <div v-html="enterprise.updateUser" ></div>
+            <div v-html="developer.updateUser" ></div>
         </el-form-item>
-        <el-form-item label="企业状态" prop="status" >
-            <span v-html="enterprise.status"></span>
-            <span
-                v-show="!enterprise.editable && enterprise.deletable"
-                class="p-l-10">驳回原因: {{enterprise.reason}}</span>
-        </el-form-item>
-        <div v-show="!enterprise.editable && !enterprise.deletable">
+        <div v-show="developer.status === 5">
             <el-button @click="HandleState(1)">通过</el-button>
-            <el-button @click="HandleState(3)">驳回</el-button>
+            <el-button @click="HandleState(6)">驳回</el-button>
         </div>
-        <el-button v-show="enterprise.editable" @click="toIndex(1)">编辑</el-button>
-        <el-button v-show="!enterprise.editable && enterprise.deletable" @click="toIndex(0)">关闭</el-button>
+        <el-button v-show="developer.status === 1"
+                @click="toIndex(1)">编辑</el-button>
+        <el-button v-show="developer.status === 6"
+                @click="toIndex(0)">关闭</el-button>
     </el-form>
 </template>
 
@@ -98,12 +144,13 @@ export default {
     name: 'popupCheck',
     data() {
         return {
-            SceneCategoryTree: [],
-            equmentArr: []
+            showPersonal: true,
+            showContent: true,
+            typeList: {}
         };
     },
     props: {
-        enterprise: Object
+        developer: Object
     },
     methods: {
         HandleState(state) {
@@ -115,6 +162,7 @@ export default {
                 this.$prompt('请输入驳回原因', '', {
                     confirmButtonText: '确认驳回',
                     showCancelButton: false,
+                    customClass: 'company-reson',
                     // inputType: 'textarea',
                     inputValidator: this.checkReason,
                     inputErrorMessage: '请输入200字以内的驳回原因'
@@ -125,8 +173,8 @@ export default {
             }
         },
         postState(state, reason) {
-            this.$store.dispatch('updataeCompanyStatus', {
-                id: this.enterprise.id,
+            this.$store.dispatch('updataeDeveloperStatus', {
+                id: this.developer.id,
                 status: state,
                 reason: reason
             }).then(() => {
@@ -151,24 +199,16 @@ export default {
             this.$emit('changcheck', val);
         },
         showBigImage(img) {
-            this.$emit('showBigImage', img);
+            if (img) {
+                this.$emit('showBigImage', img);
+            }
         }
     },
     created() {
-        this.$store.dispatch('getSceneCategoryTrees').then(data => {
-            this.SceneCategoryTree = JSON.parse(JSON.stringify(data));
-            this.SceneCategoryTree.forEach(item => {
-                this.equmentArr.push([]);
-                item.showEque = true;
-                (item.commonSceneList || []).forEach(newItem => {
-                    newItem.openMerchant = true;
-                });
-            });
-            console.log(this.SceneCategoryTree, this.equmentArr);
-        });
+        // this.log(333, this.developer.status);
+        this.showPersonal = this.developer.type === 1;
+        this.showContent = this.developer.developContent === 1;
         // 场景 待处理
-        console.log(this.enterprise);
-        console.log(this.enterprise.statusVal);
     }
 };
 

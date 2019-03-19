@@ -1,0 +1,213 @@
+
+
+#register, #visitor
+    .head
+        .title
+            a:hover
+                color: #0d3dd7
+
+        .head-button
+            button
+                a
+                    color: #0d3dd7
+            &:hover
+                a
+                    color: #fff
+.photodialog
+
+    .el-dialog
+        width: 556px
+        background: transparent
+        background-size: 100% 100%
+        box-shadow: none
+
+
+        .el-dialog__header
+            background: transparent
+
+        .el-dialog__body
+            width: 556px
+            height: 479px
+
+.photodialog.heightImg,.photodialog.widthImg
+    .el-dialog
+        width: auto
+        .el-dialog__header
+            height: 0
+        .el-dialog__body
+            padding: 0
+
+.photodialog.heightImg
+    .el-dialog__body
+        height: 464px
+        width: fit-content
+        width: -moz-fit-content
+        img
+            height: 100%
+
+.photodialog.widthImg
+    .el-dialog__body
+        width: 415px
+        height: fit-content
+        height: -moz-fit-content
+    img
+        width: 100%
+
+
+.smallphotp
+    width: 30px
+    height: 30px
+    vertical-align: middle
+    cursor: pointer
+
+.el-popover.userName
+    z-index: 10000!important
+    opacity: 0.9
+
+.el-popover
+    min-width: 90px
+    border-radius: 5px
+    padding: 5px 12px
+
+    .address
+        padding: 5px
+
+    .stip
+        text-align: center
+
+        li
+            padding: 5px
+
+.registeredit,#visitor
+
+    .el-dialog__body
+
+        .itemtop
+
+            .el-form-item__content
+                margin-left: 26px!important
+                margin-top: 28px
+
+
+                .el-checkbox
+                    display: block
+                    margin-left: 0
+                    margin-bottom: 3px
+
+        .photo
+            position: absolute
+            top: 56px
+
+            label
+                position: absolute
+                bottom: -18px
+                left: 43%
+
+            label::after
+                content: ''
+
+            .el-form-item__content
+                width: 96px
+                height: 124px
+                img
+                    height: 100%
+                    width: 100%
+
+        .photoleft
+            right: 176px
+
+        .photoright
+            right: 45px
+
+        .rightbut
+            top: 5px
+
+#newstaff, #newvisitor
+
+    .head
+        max-width: 1300px
+    .felephone
+        .el-upload.el-upload--picture-card, .el-upload-list__item
+            position: relative
+            width: 220px
+            height: 220px
+            transition-property: all
+            transition-duration: .5s
+            margin-bottom: 60px
+            transition-timing-function: cubic-bezier(0, 1, 0.5, 1)
+            .el-icon-plus
+                padding-top: 32px
+                line-height: 3
+                font-size: 38px
+
+
+        .el-upload_tip
+            color: #000
+
+
+        .addphone
+            position: absolute
+            width: 220px
+            padding: 20px
+            color: #9f9a9a
+            top: 106px
+            line-height: 20px
+
+        .el-upload-list--picture-card
+            .el-upload-list__item-actions:hover
+                // opacity: 0.8
+
+    .block
+        padding-bottom: 20px
+
+        .el-pagination
+            position: relative
+            width: 50%
+            left: 50%
+            margin-left: -125px
+    .felephone
+        .addphone
+            top: 106px
+
+    .page-wrap
+        padding-bottom: 20px
+        margin-top: 10px
+        height: auto
+        .el-pagination__total
+            font-size: 13px
+            color: #48576a
+
+@media (min-width: 1450px)
+    #newstaff, #newvisitor
+        .felephone
+            .el-upload.el-upload--picture-card, .el-upload-list__item
+                margin-left: 5%
+                margin-right: 1.5%
+        .table-head
+            margin-left: 3%
+@media screen and (min-width: 1380px) and (max-width: 1450px)
+    #newstaff, #newvisitor
+        .felephone
+            .el-upload.el-upload--picture-card, .el-upload-list__item
+                margin-left: 4.5%
+                margin-right: .5%
+        .table-head
+            margin-left: 3%
+
+@media screen and (min-width: 1355px) and (max-width: 1380px)
+    #newstaff, #newvisitor
+        .felephone
+            .el-upload.el-upload--picture-card, .el-upload-list__item
+                margin-left: 4%
+                margin-right: .3%
+            .el-upload.el-upload--picture-card,.el-upload-list__item:nth-child(5)
+                margin-left: 4.2%
+
+@media (max-width: 1355px)
+    #newstaff, #newvisitor
+        .felephone
+            .el-upload.el-upload--picture-card, .el-upload-list__item
+                margin-left: 2.5%
+                margin-right: 1%
+        .table-head
+            margin-left: 2%

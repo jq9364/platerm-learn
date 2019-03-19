@@ -5,7 +5,7 @@
  */
 
 import Vue from 'vue';
-
+alert(11);
 /**
  * 首字母大写
  * @param str 字符串

@@ -7,6 +7,9 @@ import router from './router';
 // 转换 es6 新的API
 import 'babel-polyfill';
 
+
+import 'animate.css';
+
 // 引入 自己写的组件
 // import './components/componentRegister.js';
 
@@ -15,7 +18,7 @@ import 'babel-polyfill';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import './sass/element-variables.sass';
+// import './sass/element-variables.sass';
 
 // 局部引入 首先 安装一个 插件
 // import {Menu, Submenu, MenuItem, Tabs, TabPane} from 'element-ui';

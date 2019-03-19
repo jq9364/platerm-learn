@@ -51,6 +51,11 @@ export default new Router({
             ]
         },
         {
+            path: '/Animated',
+            name: 'Animated',
+            component: () => import('@/components/Animated.vue')
+        },
+        {
             path: '/dynamicRouter/:id',
             name: 'routerDetail',
             component: () => import('@/components/Routerdetail.vue')
@@ -59,6 +64,11 @@ export default new Router({
             path: '/dynamicRouter',
             name: 'dynamicRouter',
             component: () => import('@/views/dynamicRouter.vue')
+        },
+        {
+            path: '/elementTree',
+            name: 'elementTree',
+            component: () => import('@/views/elementTree.vue')
         },
         {
             path: '/Upload',

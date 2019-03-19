@@ -16,6 +16,11 @@
                 <el-menu-item index="/LineHeart">Line 心跳</el-menu-item>
                 <el-menu-item index="/Pie">饼图 状态</el-menu-item>
         </el-submenu> -->
+        <el-menu-item index="/Animated">
+            <template slot="title">
+                <i class="el-icon-picture-outline"></i>Animated
+            </template>
+        </el-menu-item>
         <el-menu-item index="/Echart">
             <template slot="title">
                 <i class="el-icon-picture-outline"></i>Echarts图
@@ -31,14 +36,15 @@
                 <i class="el-icon-refresh"></i>动态路由
             </template>
         </el-menu-item>
+        <el-menu-item index="/elementTree">
+            <i class="el-icon-setting"></i>树形图
+        </el-menu-item>
         <el-menu-item index="/other">
             <template slot="title">
                 <i class="el-icon-more"></i>其他
             </template>
         </el-menu-item>
-        <!-- <el-menu-item index="3">
-            <i class="el-icon-setting"></i>导航三
-        </el-menu-item> -->
+
     </el-menu>
 </template>
 
